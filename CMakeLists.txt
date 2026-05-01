@@ -6,4 +6,10 @@ set(CMAKE_CXX_STANDARD 20)
 add_executable(STLcontainersLearn main.cpp
         typetrain.cpp
         SpyArsenal.cpp
-        SpyArsenal.h)
+        SpyArsenal.h
+        EncryptionBox.cpp
+        EncryptionBox.h
+        SpyController.cpp
+        SpyController.h
+        main.cpp
+        main.cpp)

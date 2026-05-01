@@ -3,3 +3,9 @@
 //
 
 #include "SpyArsenal.h"
+#include "EncryptionBox.h"
+
+SpyArsenal::SpyArsenal() : encryptionBox(new EncryptionBox()) {
+}
+
+SpyArsenal::~SpyArsenal() {delete encryptionBox;}
