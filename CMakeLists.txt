@@ -4,4 +4,6 @@ project(STLcontainersLearn)
 set(CMAKE_CXX_STANDARD 20)
 
 add_executable(STLcontainersLearn main.cpp
-        typetrain.cpp)
+        typetrain.cpp
+        SpyArsenal.cpp
+        SpyArsenal.h)

@@ -1,0 +1,13 @@
+//
+// Created by newvi on 01.05.2026.
+//
+
+#ifndef STLCONTAINERSLEARN_SPYARSENAL_H
+#define STLCONTAINERSLEARN_SPYARSENAL_H
+
+
+class SpyArsenal {
+};
+
+
+#endif //STLCONTAINERSLEARN_SPYARSENAL_H
