@@ -5,6 +5,7 @@
 #include <vector>
 #include <array>
 #include <iostream>
+#include <deque>
 #ifndef STLCONTAINERSLEARN_SPYARSENAL_H
 #define STLCONTAINERSLEARN_SPYARSENAL_H
 class EncryptionBox;
@@ -56,6 +57,29 @@ public:
         std::cout << "Success!" << std::endl;
         for (int i = 0; i < oldTaskCodes.size(); i++) {
             std::cout << oldTaskCodes[i] << ", " << std::endl;
+        }
+    };
+
+    void doorUnblock() {
+
+    }
+
+#define INCREMENT(number) (number + 1)
+
+    template <typename T>
+    void deleteCentralDequeElement(std::deque<T>& deque) {
+        size_t size = deque.size();
+        size_t center = INCREMENT(size) / 2; // rounds down without +1
+        if (deque.size() % 2 == 0) {
+            //delete two elements at center
+            auto itDelStart = deque.begin() + (center - 1);
+            auto itDelEnd = deque.begin() + (center + 1);
+            deque.erase(itDelStart, itDelEnd);
+        }
+        else {
+            //delete one element at center
+            auto itDel = deque.begin() + center;
+            deque.erase(itDel);
         }
     };
 };

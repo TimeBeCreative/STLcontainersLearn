@@ -11,6 +11,7 @@ void SpyController::MakeAction() {
     std::cout << "Welcome back, dear spy! Choose what to do: " << std::endl;
     std::cout << "Encrypt the alphabet - git enc a" << std::endl;
     std::cout << "Add new mission codes to system - git add mcodes" << std::endl;
+    std::cout << "Unblock the door - git door unblock" << std::endl;
 
     std::string spyInput;
     std::getline(std::cin, spyInput);
@@ -49,7 +50,11 @@ void SpyController::MakeAction() {
         spyArsenal.addMissionTasksCodes(spyArsenal.missionTasksCodes, toAddTaskCodes, std::stoi(placementPosition));
 
     }
+    else if (spyInput == "git door unblock") {
+
+    }
     else {
         std::cout << "?" << std::endl;
     }
 }
+
