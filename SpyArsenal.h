@@ -67,8 +67,7 @@ public:
 
     void doorUnblock() {
 
-        SetConsoleOutputCP(CP_UTF8);
-        SetConsoleCP(CP_UTF8);
+
 
         std::cout << "You are standing in front of the new blocked door." << std::endl;
         std::cout << "There are several gates on the door, you need to shoot the middle one." << std::endl;
