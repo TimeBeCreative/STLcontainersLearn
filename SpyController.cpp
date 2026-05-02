@@ -3,6 +3,7 @@
 //
 #include <iostream>
 #include <string>
+#include <deque>
 #include "SpyController.h"
 #include "EncryptionBox.h"
 
@@ -51,6 +52,8 @@ void SpyController::MakeAction() {
 
     }
     else if (spyInput == "git door unblock") {
+
+        spyArsenal.doorUnblock();
 
     }
     else {

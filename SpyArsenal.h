@@ -6,9 +6,13 @@
 #include <array>
 #include <iostream>
 #include <deque>
+#include <random>
+#include <windows.h>
 #ifndef STLCONTAINERSLEARN_SPYARSENAL_H
 #define STLCONTAINERSLEARN_SPYARSENAL_H
 class EncryptionBox;
+
+
 
 class SpyArsenal {
 public:
@@ -60,7 +64,61 @@ public:
         }
     };
 
+
     void doorUnblock() {
+
+        SetConsoleOutputCP(CP_UTF8);
+        SetConsoleCP(CP_UTF8);
+
+        std::cout << "You are standing in front of the new blocked door." << std::endl;
+        std::cout << "There are several gates on the door, you need to shoot the middle one." << std::endl;
+
+        std::random_device rd;
+        std::mt19937 gen(rd());
+
+        std::vector<std::string> emojis = {
+            "😀", "😂", "😎", "😍", "🤔", "👽",
+            "🎃", "🌈", "🍕", "🍔", "🍟", "🍦", "🍩", "🍪", "🍫",
+        };
+
+        std::uniform_int_distribution<size_t> dist(0, emojis.size() - 1);
+        std::uniform_int_distribution<> dSize(1, 5);
+        int gatesSize = dSize(gen) * 2;
+        std::deque<std::string> gates(static_cast<size_t>(gatesSize), "A");
+
+        auto it = gates.begin();
+        while (it != gates.end()) {
+            *it = emojis[dist(gen)];
+            ++it;
+        }
+
+
+        for (const auto& gate : gates) std::cout << gate << " ";
+        std::cout << std::endl;
+        deleteCentralDequeElement(gates);
+        std::cout << "Central gates are shot!" << std::endl;
+        for (const auto& gate : gates) std::cout << gate << " ";
+        std::cout << std::endl;
+
+
+        std::cout << "Inside the central door are runes, you need to shoot central to activate it." << std::endl;
+        std::cout << "After activation rune destroys." << std::endl;
+        int runesSize = dSize(gen) * 2 + 1;
+        std::deque<std::string> runes(static_cast<size_t>(runesSize), "<");
+
+
+        auto it1 = runes.begin();
+        while (it1 != runes.end()) {
+            *it1 = emojis[dist(gen)];
+            ++it1;
+        }
+
+        for (const auto& rune : runes) std::cout << rune << " " ;
+        std::cout << std::endl;
+        deleteCentralDequeElement(runes);
+        std::cout << "Central rune is shot!" << std::endl;
+        for (const auto& rune : runes) std::cout << rune << " " ;
+        std::cout << std::endl;
 
     }
 
@@ -69,8 +127,8 @@ public:
     template <typename T>
     void deleteCentralDequeElement(std::deque<T>& deque) {
         size_t size = deque.size();
-        size_t center = INCREMENT(size) / 2; // rounds down without +1
-        if (deque.size() % 2 == 0) {
+        size_t center = size / 2; // rounds down without +1
+        if (size % 2 == 0) {
             //delete two elements at center
             auto itDelStart = deque.begin() + (center - 1);
             auto itDelEnd = deque.begin() + (center + 1);
