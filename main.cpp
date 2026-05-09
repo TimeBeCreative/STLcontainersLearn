@@ -1,6 +1,6 @@
 #include <iostream>
 #include <array>
-#include <windows.h>
+//#include <windows.h>
 
 //1. Зсув елементів: Реалізувати функцію для зсуву елементів масиву
 //std::array на задану кількість позицій за годинниковою стрілкою.
@@ -11,8 +11,8 @@
 
 int main() {
 
-    SetConsoleOutputCP(CP_UTF8);
-    SetConsoleCP(CP_UTF8);
+   /* SetConsoleOutputCP(CP_UTF8);
+    SetConsoleCP(CP_UTF8); */
 
     SpyController spyController;
     spyController.MakeAction();
