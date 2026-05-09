@@ -13,7 +13,6 @@
 class EncryptionBox;
 
 
-
 class SpyArsenal {
 public:
 
