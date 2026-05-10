@@ -9,13 +9,16 @@
 
 
 void SpyController::MakeAction() {
+      std::cout << "///////////////////////////////////////////////////////" << std::endl;
     std::cout << "Welcome back, dear spy! Choose what to do: " << std::endl;
+      std::cout << "///////////////////////////////////////////////////////" << std::endl;
     std::cout << "Encrypt the alphabet = git enc a" << std::endl;
     std::cout << "Add new mission codes to system = git add mcodes" << std::endl;
     std::cout << "Unblock the door = git door unblock" << std::endl;
 
     std::cout << "Limousine runaway, info (1) = git limo" << std::endl;
     std::cout << "Look which limousine is the best =  git -l best" << std::endl;
+    std::cout << "Apply tax (task 3) = git tax"<< std::endl;
 
     std::cout << "///////////////////////////////////////////////////////" << std::endl;
     
@@ -112,6 +115,9 @@ void SpyController::MakeAction() {
         std::cout << "///////////////////////////////////////////////////////" << std::endl;
 
 
+    }
+    else if (spyInput == "git tax") {
+        spyArsenal.garage.applyMafiaTax();
     }
     else {
         std::cout << "?" << std::endl;

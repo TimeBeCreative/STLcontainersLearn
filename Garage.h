@@ -5,8 +5,24 @@
 #include <algorithm>
 #include "Limousine.h"
 
+struct TaxApplier {
+   double taxRate;
+
+   TaxApplier(double rate) : taxRate(rate) {}
+
+   void operator()(double &price) const { //& to change
+      price += price * taxRate;
+   }
+};
+
 class Garage {
     private:
+
+    void printPrices() {
+      for (double p : limoPrices) {
+         std::cout << p << "$ " <<std::endl;
+      }
+    }
 
     public:
 
@@ -49,5 +65,25 @@ class Garage {
    );
    }
 
+   std::deque<double> limoPrices {
+      10000.3,
+      1453.124,
+      21.35,
+      235.0
+   };
+
+   void applyMafiaTax() {
+      std::cout << "Prices before tax: "<< std::endl;
+      printPrices();
+
+      TaxApplier mafiaTax(0.15);
+      std::for_each(limoPrices.begin(), limoPrices.end(), mafiaTax);
+
+      std::cout << "Prices after Mafia Tax 15%: " << std::endl;
+      printPrices();
+
+   }
+
    
 };
+
