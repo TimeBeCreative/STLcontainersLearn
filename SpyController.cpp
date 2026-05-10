@@ -14,6 +14,9 @@ void SpyController::MakeAction() {
     std::cout << "Add new mission codes to system - git add mcodes" << std::endl;
     std::cout << "Unblock the door - git door unblock" << std::endl;
 
+    std::cout << "Limousine runaway, info (1) - git limo" << std::endl;
+    
+
     std::string spyInput;
     std::getline(std::cin, spyInput);
 
@@ -55,6 +58,29 @@ void SpyController::MakeAction() {
 
         spyArsenal.doorUnblock();
 
+    }
+    else if (spyInput == "git limo") {
+        std::cout << "There are 20 limousines (map) in the garage. Let`s look at them." << std::endl;
+        spyArsenal.limousinesInitialisation();
+
+        std::cout<<"Full info:" << std::endl;
+
+        auto it = spyArsenal.garage.limousinesInGarage.begin();
+
+        while (it != spyArsenal.garage.limousinesInGarage.end()) {
+             std::cout << "id: " <<it->first << ", "
+            <<"Name: " << it->second.name << ", "
+            <<"Number of wheels: " << it->second.numberOfWheels << std::endl;
+            ++it;
+        }
+
+       /* for (const auto& pair : spyArsenal.garage.limousinesInGarage) {
+            //pair first = id
+            //pair second = Limousine
+            std::cout << "id: " <<pair.first << ", "
+            <<"Name: " << pair.second.name
+            <<"Wheels: " << pair.second.numberOfWheels << std::endl;
+        }*/
     }
     else {
         std::cout << "?" << std::endl;

@@ -7,18 +7,25 @@
 #include <iostream>
 #include <deque>
 #include <random>
+#include <list>
+#include <algorithm>
 //#include <windows.h>
-#ifndef STLCONTAINERSLEARN_SPYARSENAL_H
-#define STLCONTAINERSLEARN_SPYARSENAL_H
+#include "SpyDiary.h"
+#include "Garage.h"
+
 class EncryptionBox;
 
 
 class SpyArsenal {
+
+
 public:
 
     SpyArsenal();
     ~SpyArsenal();
     EncryptionBox* encryptionBox;
+    Garage garage;
+    SpyDiary diary;
 
     std::array<char, 26> standardAlphabet{'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm',
                                   'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x',
@@ -138,8 +145,65 @@ public:
             deque.erase(itDel);
         }
     };
+
+   /* 1. Створити std::list<int> на 20 елементів. Заповнити список рандомно
+(випадковим чином). Написати функцію bool isOdd(int n) та
+використати std::remove_if для обробки списку.
+
+🔝Шпигуну потрібно лише те, що ділиться на 2. Лімузини, колеса лімузина. Список колес (кількості колес кожної машини) машин. */
+
+int genRandWheelsCount() {
+    std::random_device rd;
+    std::mt19937 gen(rd());
+    std::uniform_int_distribution<> dis(2, 14);
+    return dis(gen);
+}
+
+struct isOdd {
+    bool operator()(int n) const {
+        return n % 2 != 0;
+    }
+};
+
+template <typename T>
+void deleteOdd(std::list<T>& list) {
+    list.erase(std::remove_if(list.begin(), list.end(), //remove зсуває, erase прибирає
+        isOdd()), list.end());
+
+}
+
+template <typename T>
+void coutList(std::list<T>& list) {
+    for (int n : list) std::cout << n << " ";
+    std::cout << "\n\n";
+}
+
+
+//void filterCarWithEvenNumberOfWheels() {
+//template <typename T>
+void limousinesInitialisation() {
+
+    std::list<int> wheelsList;
+    for(int i = 0; i < 20; ++i) {
+
+       int notListWheels = genRandWheelsCount();
+       wheelsList.push_back(notListWheels);
+
+       
+       //list no [i]
+
+        garage.limousinesInGarage[i] = {std::string("Limo") + garage.limousinesNames[i], notListWheels};
+    };
+
+    std::cout << "System is working..." << std::endl;
+    std::cout << "List of how many wheels has each limo:" << std::endl;
+    coutList(wheelsList);
+    }
+
+    
+ //Limousine limo = {std::string("Limo") + garage.limousinesNames[i], wheelsList[i]};
+
+
 };
 
 
-
-#endif //STLCONTAINERSLEARN_SPYARSENAL_H
