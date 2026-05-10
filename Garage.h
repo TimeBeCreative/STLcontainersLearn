@@ -2,6 +2,7 @@
 #include <map>
 #include <string>
 #include <array>
+#include <algorithm>
 #include "Limousine.h"
 
 class Garage {
@@ -38,5 +39,15 @@ class Garage {
       "LimoSpy",
       "Limonade",
    };
+
+   template <typename T, size_t S>
+   void sortCarNames(std::array<T, S>& limoNames) {
+      std::sort(limoNames.begin(), limoNames.end(),
+      [](const T& a, const T& b) {
+         return a.length() > b.length();
+      }
+   );
+   }
+
    
 };

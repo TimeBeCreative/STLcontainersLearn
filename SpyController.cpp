@@ -10,11 +10,14 @@
 
 void SpyController::MakeAction() {
     std::cout << "Welcome back, dear spy! Choose what to do: " << std::endl;
-    std::cout << "Encrypt the alphabet - git enc a" << std::endl;
-    std::cout << "Add new mission codes to system - git add mcodes" << std::endl;
-    std::cout << "Unblock the door - git door unblock" << std::endl;
+    std::cout << "Encrypt the alphabet = git enc a" << std::endl;
+    std::cout << "Add new mission codes to system = git add mcodes" << std::endl;
+    std::cout << "Unblock the door = git door unblock" << std::endl;
 
-    std::cout << "Limousine runaway, info (1) - git limo" << std::endl;
+    std::cout << "Limousine runaway, info (1) = git limo" << std::endl;
+    std::cout << "Look which limousine is the best =  git -l best" << std::endl;
+
+    std::cout << "///////////////////////////////////////////////////////" << std::endl;
     
 
     std::string spyInput;
@@ -81,6 +84,34 @@ void SpyController::MakeAction() {
             <<"Name: " << pair.second.name
             <<"Wheels: " << pair.second.numberOfWheels << std::endl;
         }*/
+    }
+    else if (spyInput == "git -l best") {
+        std::cout << "We have 20 limousines names in the garage." << std::endl;
+        std::cout << "More letters in name = better limousine." << std::endl;
+        std::cout << "///////////////////////////////////////////////////////" << std::endl;
+        //cout before sort
+        auto it = spyArsenal.garage.limousinesNames.begin();
+
+        while (it != spyArsenal.garage.limousinesNames.end()) {
+            std::cout << *it << std::endl;
+            ++it;
+        }
+
+        std::cout << "///////////////////////////////////////////////////////" << std::endl;
+
+        std::cout << "Now look sorted names for conviniency: "<< std::endl;
+        spyArsenal.garage.sortCarNames(spyArsenal.garage.limousinesNames);
+         //cout after sort
+        auto it2 = spyArsenal.garage.limousinesNames.begin();
+
+        while (it2 != spyArsenal.garage.limousinesNames.end()) {
+            std::cout << *it2 << std::endl;
+            ++it2;
+        }
+
+        std::cout << "///////////////////////////////////////////////////////" << std::endl;
+
+
     }
     else {
         std::cout << "?" << std::endl;
