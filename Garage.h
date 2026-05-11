@@ -84,6 +84,41 @@ class Garage {
 
    }
 
+   /*6. Задано std::vector<int> чисел. Використати алгоритм, що дозволить
+замінити всі від’ємні числа вектор на нуль.
+
+🔝Температура кімнат в домі шпигуна. Холодно = міняєм на 0*/
+
+   void changeToZero_if(std::vector<int>& temperatures, bool (*predicate) (int)) {
+      std::for_each(temperatures.begin(), temperatures.end(), [predicate](int &t) {
+         if (predicate(t)) {
+            t = 0;
+         }
+      });
+      /*for (int &i : temperatures) {
+         if (predicate(i)) {
+            i = 0;
+         }
+      }*/
+   }
+   std::vector<int> roomTemeratures{3, 6, -3, -7, 1, -8, 30};
+   void temperatureControl() {
+      std::cout << "Welcome to spy garage! Some rooms are cold. Look at them: " << std::endl;
+      for (int t : roomTemeratures) {
+         std::cout<< t << ", ";
+      }
+      std::cout<<std::endl;
+
+      std::cout << "Now system will fix negative temperatures to 0 to prrevent freezing: "<< std::endl;
+
+      changeToZero_if(roomTemeratures, [](auto x) { return x < 0; });
+
+      for (int t : roomTemeratures) {
+         std::cout<< t << ", ";
+      }
+      std::cout<<std::endl;
+
+   }
    
 };
 

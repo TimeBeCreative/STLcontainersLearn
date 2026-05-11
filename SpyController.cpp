@@ -16,11 +16,15 @@ void SpyController::MakeAction() {
     std::cout << "Add new mission codes to system = git add mcodes" << std::endl;
     std::cout << "Unblock the door = git door unblock" << std::endl;
 
+    std::cout << "///////////////////////////////////////////////////////" << std::endl;
+    std::cout << "///////////////////_____LAB_9_____////////////////////" << std::endl;
+
     std::cout << "Limousine runaway, info (1) = git limo" << std::endl;
     std::cout << "Look which limousine is the best =  git -l best" << std::endl;
     std::cout << "Apply tax (task 3) = git tax"<< std::endl;
     std::cout << "Count impoerant events in range (task 4) = git count e" << std::endl;
     std::cout << "Show info about incomes > 100 = git money" << std::endl;
+    std::cout << "Control temperature in the garage rooms = git -c g tmp" << std::endl;
 
     std::cout << "///////////////////////////////////////////////////////" << std::endl;
     
@@ -134,6 +138,9 @@ void SpyController::MakeAction() {
     }
     else if (spyInput == "git money") {
         spyArsenal.diary.showHighIncomes();
+    }
+    else if (spyInput == "git -c g tmp") {
+        spyArsenal.garage.temperatureControl();
     }
     else {
         std::cout << "?" << std::endl;
