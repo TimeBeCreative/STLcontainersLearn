@@ -3,6 +3,7 @@
 #include <set>
 #include <vector>
 #include <string>
+#include <algorithm>
 
 struct WithinRange {
 
@@ -56,5 +57,38 @@ class SpyDiary {
         }
     });
     }
+
+    /*7. Створити std::vector<int>. Одночасно обчислити суму елементів та
+знайти середнє значення (НЕ використовувати std::accumulte).
+
+🔝Успіх шпигуна, статистика. 100 = успіх, 0 = провал.*/
+
+    void checkTaskAnalysis()  {
+        std::vector<int> taskAnalysis = {
+        70, 50, 90, 100, 34
+    };
+
+    int sum = 0;
+    std::for_each(taskAnalysis.begin(), taskAnalysis.end(), [&sum](int value) {
+
+        sum += value;
+    });
+
+    double average = 0;
+    if (!taskAnalysis.empty()) {
+        average = static_cast<double>(sum) / taskAnalysis.size();
+    }
+
+    std::cout << "Spy tasks statistics: "<< std::endl;
+    std::cout << "All success sum: " << sum << std::endl;
+    std::cout << "Average success level: " << average << "%" << std::endl;
+
+    if (average >= 50.0) {
+        std::cout << "Status: productive output" << std::endl;
+    } else {
+        std::cout << "Status: spy, work more." << std::endl;
+    }
+    }
+    
 
 };
