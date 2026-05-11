@@ -26,6 +26,7 @@ void SpyController::MakeAction() {
     std::cout << "Show info about incomes > 100 = git money" << std::endl;
     std::cout << "Control temperature in the garage rooms = git -c g tmp" << std::endl;
     std::cout << "Success task analysis = git st"<< std::endl;
+    std::cout << "Chech if there is meeting this week = git meet" << std::endl;
 
     std::cout << "///////////////////////////////////////////////////////" << std::endl;
     
@@ -145,6 +146,12 @@ void SpyController::MakeAction() {
     }
     else if (spyInput == "git st") {
         spyArsenal.diary.checkTaskAnalysis();
+    }
+    else if (spyInput == "git meet") {
+        std::string message;
+        std::cout << "Please provide message for encrypting: "<< std::endl;
+        std::getline(std::cin, message);
+        spyArsenal.analyzeSecretMessage(message);
     }
     else {
         std::cout << "?" << std::endl;

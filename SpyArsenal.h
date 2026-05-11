@@ -204,6 +204,31 @@ void limousinesInitialisation() {
  //Limousine limo = {std::string("Limo") + garage.limousinesNames[i], wheelsList[i]};
 
 
+ /*8. Задано текстовий рядок. Написати функцію, для підрахунку кількості
+голосних літер в рядку. (Використовуючи алгоритми).
+
+🔝голосних менше 10 -> не іти на таємний мітинг, більше 10 -> іти*/
+
+    void analyzeSecretMessage(const std::string& message) {
+        std::cout << "Analysis of secret message..."<< std::endl;
+        auto isVowel = [](char c) {
+            char low = std::tolower(static_cast<unsigned char>(c));
+            return low == 'a' ||  low == 'e' || low == 'i' || low == 'o' || low == 'u' || low == 'y';
+        };
+        int count = std::count_if(message.begin(), message.end(), isVowel);
+
+        std::cout << "Vowel letters count: " << count << std::endl;
+
+        if (count > 10) {
+            std::cout << "Mafia asks you to come to the secret meeting." << std::endl;
+        }
+        else {
+            std::cout << "Mafia not hosting any meetings this week." << std::endl;
+        }
+
+        
+    }
+
 };
 
 
