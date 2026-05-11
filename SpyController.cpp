@@ -20,6 +20,7 @@ void SpyController::MakeAction() {
     std::cout << "Look which limousine is the best =  git -l best" << std::endl;
     std::cout << "Apply tax (task 3) = git tax"<< std::endl;
     std::cout << "Count impoerant events in range (task 4) = git count e" << std::endl;
+    std::cout << "Show info about incomes > 100 = git money" << std::endl;
 
     std::cout << "///////////////////////////////////////////////////////" << std::endl;
     
@@ -130,6 +131,9 @@ void SpyController::MakeAction() {
         std::cin>>end;
 
         spyArsenal.diary.countEventsInRange(stoi(start), stoi(end));
+    }
+    else if (spyInput == "git money") {
+        spyArsenal.diary.showHighIncomes();
     }
     else {
         std::cout << "?" << std::endl;

@@ -33,4 +33,28 @@ class SpyDiary {
 
     }
 
+    /* 5. Задано std::map<st::string, int>, яка описує предмети та їхню кількість
+(уявний склад). Використовуючи алгоритми, написати функцію, яка
+покаже елементи, кількість яких більша 100.
+
+🔝Джерело (конверт), дохід (всередині конверту)*/
+
+    std::map<std::string, int> spyIncomes = {
+        {"University mission", 50 },
+        {"Icecream breack", 203},
+        {"Hacking 176425 system", 350},
+        {"Volunteering", 0}
+    };
+
+    void showHighIncomes() {
+        std::cout << "Incomes > 100" << std::endl;
+
+        std::for_each(spyIncomes.begin(), spyIncomes.end(),
+    [](const std::pair<std::string, int>& item) {
+        if (item.second > 100) {
+            std::cout << "Source of the income: " << item.first << "; Amount: " << item.second << std::endl;
+        }
+    });
+    }
+
 };
