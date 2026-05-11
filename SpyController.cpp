@@ -19,6 +19,7 @@ void SpyController::MakeAction() {
     std::cout << "Limousine runaway, info (1) = git limo" << std::endl;
     std::cout << "Look which limousine is the best =  git -l best" << std::endl;
     std::cout << "Apply tax (task 3) = git tax"<< std::endl;
+    std::cout << "Count impoerant events in range (task 4) = git count e" << std::endl;
 
     std::cout << "///////////////////////////////////////////////////////" << std::endl;
     
@@ -118,6 +119,17 @@ void SpyController::MakeAction() {
     }
     else if (spyInput == "git tax") {
         spyArsenal.garage.applyMafiaTax();
+    }
+    else if (spyInput == "git count e") {
+        std::string start;
+        std::cout << "Please write start: " << std::endl; 
+        std::cin>>start;
+
+        std::string end;
+        std::cout << "Please write end: " << std::endl;
+        std::cin>>end;
+
+        spyArsenal.diary.countEventsInRange(stoi(start), stoi(end));
     }
     else {
         std::cout << "?" << std::endl;
