@@ -130,6 +130,26 @@ public:
 #define INCREMENT(number) (number + 1)
 
     template <typename T>
+    void deleteCentralListElement(std::list<T>& myList) {
+        if (myList.empty()) return;
+        size_t  size = myList.size();
+        size_t center = size / 2;
+        auto it = myList.begin();
+        if (size % 2 == 0) {
+            std::advance(it, center - 1);
+            auto itEnd = it;
+            std::advance(itEnd, 2);
+
+            myList.erase(it, itEnd);
+        }
+        else {
+            std::advance(it, center);
+            myList.erase(it);
+
+        }
+    }
+
+    template <typename T>
     void deleteCentralDequeElement(std::deque<T>& deque) {
         size_t size = deque.size();
         size_t center = size / 2; // rounds down without +1
@@ -145,6 +165,8 @@ public:
             deque.erase(itDel);
         }
     };
+
+
 
    /* 1. Створити std::list<int> на 20 елементів. Заповнити список рандомно
 (випадковим чином). Написати функцію bool isOdd(int n) та
