@@ -48,7 +48,7 @@ public:
     };
 
     template <typename T>
-    void addMissionTasksCodes(std::vector<T>& oldTaskCodes, std::vector<T>& toAddTaskCodes, int placementPosition) {
+    void addMissionTasksCodesOld(std::vector<T>& oldTaskCodes, std::vector<T>& toAddTaskCodes, int placementPosition) {
         int count = 0; //number
         auto it = oldTaskCodes.begin(); // pointer
         while (it !=  oldTaskCodes.end()) {
@@ -68,6 +68,19 @@ public:
         for (int i = 0; i < oldTaskCodes.size(); i++) {
             std::cout << oldTaskCodes[i] << ", " << std::endl;
         }
+    };
+
+    template  <typename T>
+    void addMissionTasksCodes(std::vector<T>& oldTaskCodes, std::vector<T>& toAddTaskCodes, int placementPosition) {
+        if (placementPosition > oldTaskCodes.size()) placementPosition = oldTaskCodes.size();
+        oldTaskCodes.insert(oldTaskCodes.begin() + placementPosition, toAddTaskCodes.begin(), toAddTaskCodes.end());
+
+        std::cout << "Success!" << std::endl;
+        for (const auto& code : oldTaskCodes)  {
+            std::cout <<  code << ", " << std::endl;
+        }
+        
+
     };
 
 
